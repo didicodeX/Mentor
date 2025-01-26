@@ -3,6 +3,7 @@ import { SubjectService } from './subject.service';
 import { SubjectController } from './subject.controller';
 
 @Module({
+  exports: [SubjectService],
   controllers: [SubjectController],
   providers:[SubjectService]
 })

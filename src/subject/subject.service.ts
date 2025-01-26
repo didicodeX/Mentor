@@ -4,10 +4,15 @@ import { SUBJECTS } from './bdd';
 
 @Injectable()
 export class SubjectService {
-  createNewSubject({ name }: InterfaceSubject): InterfaceSubject[] {
+  
+  findAll(): InterfaceSubject[]{
+    return SUBJECTS;
+  }
+
+  createNewSubject({ name}: InterfaceSubject): InterfaceSubject[] {
     const sortedByIdSubject = SUBJECTS.sort((a, b) => a.id - b.id);
     const newId = sortedByIdSubject[sortedByIdSubject.length - 1].id + 1;
-    return [...SUBJECTS, { id: newId, name: name }];
+    return [...SUBJECTS, { id: newId, name: name, levelId: 1 }];
   }
 
   findOneById(id: number): InterfaceSubject {
@@ -15,7 +20,8 @@ export class SubjectService {
     if (subject) return subject;
     return {
       id: 1,
-      name: "errer"
+      name: "errer",
+      levelId: 0
     }
   }
 }
